@@ -53,8 +53,8 @@ const EDUCATION = [
 const EXPERIENCE = [
   {
     title: "IT Executive",
-    organization: "[Current Company — add company name here]",
-    duration: "Current",
+    organization: "Stavya Spine Hospital",
+    duration: "June 2026 - Current",
     description: [
       "Managing IT infrastructure, system support, hardware & software troubleshooting, and IT operations while actively building expertise in AI/ML and Computer Vision through independent research and projects."
     ]
