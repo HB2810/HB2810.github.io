@@ -314,7 +314,7 @@ const Hero = () => {
             <a href="#projects" className="flex items-center gap-2 bg-cyan/10 hover:bg-cyan/20 border border-cyan text-cyan px-6 py-3 rounded-md font-mono transition-all">
               View Projects <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="/HB Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-light px-6 py-3 rounded-md font-mono transition-all">
+            <a href={`${import.meta.env.BASE_URL}HB Resume.pdf`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-light px-6 py-3 rounded-md font-mono transition-all">
               Download Resume <Download className="w-4 h-4" />
             </a>
           </div>
@@ -342,7 +342,7 @@ const Hero = () => {
             <div className="absolute inset-0 rounded-full border border-cyan animate-[spin_10s_linear_infinite] opacity-50"></div>
             <div className="w-full h-full rounded-full overflow-hidden bg-dark">
               <img 
-                src="/profile.jpg" 
+                src={`${import.meta.env.BASE_URL}profile.jpg`}
                 alt="Het Bhatt" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
