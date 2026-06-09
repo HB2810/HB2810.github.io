@@ -633,15 +633,8 @@ const Achievements = () => {
 const Contact = () => {
   const [formStatus, setFormStatus] = useState('idle');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-    setTimeout(() => {
-      setFormStatus('success');
-      e.target.reset();
-      setTimeout(() => setFormStatus('idle'), 3000);
-    }, 1000);
-  };
+  // We are using FormSubmit to handle the actual email delivery!
+  // No custom onSubmit is needed because standard HTML form POST handles it.
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -670,15 +663,20 @@ const Contact = () => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form action="https://formsubmit.co/hetbhatt10@gmail.com" method="POST" className="space-y-4">
+              {/* FormSubmit Configuration */}
+              <input type="hidden" name="_subject" value="New Portfolio Message!" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://HB2810.github.io/HB-Portfolio/" />
+
               <div>
-                <input type="text" required placeholder="Name" className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-light focus:outline-none focus:border-cyan transition-colors" />
+                <input type="text" name="name" required placeholder="Name" className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-light focus:outline-none focus:border-cyan transition-colors" />
               </div>
               <div>
-                <input type="email" required placeholder="Email" className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-light focus:outline-none focus:border-cyan transition-colors" />
+                <input type="email" name="email" required placeholder="Email" className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-light focus:outline-none focus:border-cyan transition-colors" />
               </div>
               <div>
-                <textarea required placeholder="Message" rows="4" className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-light focus:outline-none focus:border-cyan transition-colors resize-none"></textarea>
+                <textarea name="message" required placeholder="Message" rows="4" className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 text-light focus:outline-none focus:border-cyan transition-colors resize-none"></textarea>
               </div>
               <button 
                 type="submit" 
