@@ -1,16 +1,52 @@
-# React + Vite
+# Het Bhatt — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Premium single-page portfolio built with React 19, Vite, Framer Motion 12 and vanilla CSS.
+Design direction follows the brief in `Website_portfolio_details.md` (reference: touquirakhtar.com)
+and is documented in `docs/superpowers/specs/2026-11-08-portfolio-design.md`.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install        # once
+npm run dev        # local dev server (http://localhost:5173/HB-Portfolio/)
+npm run check      # validates content (no placeholders / broken links) then builds
+npm run build      # production build → dist/
+npm run preview    # serve the production build locally
+npm run deploy     # build and publish dist/ to the gh-pages branch
+```
 
-## React Compiler
+## Where to edit your details
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| What | File |
+| --- | --- |
+| Name, roles, headline, bio, location, contact links, metrics, skills, tools, process, colours, fonts, section toggles | `src/config/site.js` |
+| Projects (title, description, stack, links, cover image) | `src/data/projects.js` |
+| Experience, education, awards | `src/data/experience.js` |
+| Portrait, résumé, project screenshots | `public/assets/` |
+| Favicon | `public/favicon.svg` |
 
-## Expanding the ESLint configuration
+Components never hard-code personal information; everything is read from those files.
+Leave any string empty (`""`) or set a `preferences.show…` flag to `false` to hide its UI.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Adding a project screenshot
+
+1. Export a landscape image (ideally 1600×1200 WebP) to `public/assets/projects/`.
+2. Set `cover: 'assets/projects/your-file.webp'` on that project in `src/data/projects.js`.
+   Until then the site renders an abstract generated cover for that project.
+
+### Changing the deploy path
+
+`vite.config.js` sets `base: '/HB-Portfolio/'` for GitHub Pages. For a custom domain or a
+root deploy change it to `'/'` and update `websiteUrl` in `src/config/site.js`.
+
+## Accessibility & motion
+
+- Skip link, semantic landmarks, one `h1`, labelled controls, visible focus rings, 44 px targets.
+- The header **Motion** toggle turns all non-essential animation off and persists the choice
+  under the `hb-portfolio-motion` storage key. `prefers-reduced-motion` sets the default.
+- Project dialog: Escape / backdrop / close button, focus trapped inside, focus returned on close.
+
+## Contact form
+
+The form is a `mailto:` composer. It validates input, then opens the visitor's email app with the
+message pre-filled. Nothing is sent from the page itself (static site, no backend).
