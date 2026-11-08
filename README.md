@@ -34,10 +34,22 @@ Leave any string empty (`""`) or set a `preferences.show…` flag to `false` to 
 2. Set `cover: 'assets/projects/your-file.webp'` on that project in `src/data/projects.js`.
    Until then the site renders an abstract generated cover for that project.
 
-### Changing the deploy path
+### Deploying elsewhere (Vercel, Netlify, custom domain)
 
-`vite.config.js` sets `base: '/HB-Portfolio/'` for GitHub Pages. For a custom domain or a
-root deploy change it to `'/'` and update `websiteUrl` in `src/config/site.js`.
+`vite.config.js` defaults to `base: '/HB-Portfolio/'` for GitHub Pages. On a host that serves
+from the root, set the environment variable `VITE_BASE=/` in that host's project settings
+(build command `npm run build`, output directory `dist`) and update `websiteUrl` in
+`src/config/site.js` to the final address so canonical and Open Graph tags are right.
+
+## Rebuild effect
+
+The header **Rebuild** button wipes the page blank and a swarm of named cursors rebuilds it:
+boxes are dragged out with a crosshair and size badge, text is wiped in behind a caret,
+section headings get a ruler guide, the swarm works nearest to where you have scrolled, and
+the floating bar offers 1×/2×/3× speed, a **Tour** auto-scroll and **Skip**. It is an original
+implementation in `src/lib/rebuild/engine.js`; it only runs while Motion is on and never runs
+automatically. The review of the upstream "Swarm Rebuild" code it was inspired by is in
+`docs/swarmline-security-review.md`.
 
 ## Accessibility & motion
 

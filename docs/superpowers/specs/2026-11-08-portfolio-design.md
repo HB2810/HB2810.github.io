@@ -51,6 +51,9 @@ Footer: wordmark, copyright line, social icons.
 - Motion toggle in the header persists under `hb-portfolio-motion`; `prefers-reduced-motion`
   sets the default. Motion off disables Framer and CSS transitions.
 - Contact form is a `mailto:` composer (static site, no backend).
-- Swarmline effect from the brief is **not** included: the brief requires a security review
-  before third-party effect scripts are added.
+- Swarmline / "Swarm Rebuild" code is **not** vendored (unlicensed upstream, see
+  `docs/swarmline-security-review.md`). An original rebuild effect lives in
+  `src/lib/rebuild/engine.js`, started from the header "Rebuild" button, gated by Motion.
+- 2026-11-08: role at Stavya Spine Hospital changed from IT Executive to AI Officer
+  (multi-role: AI-driven digital transformation of operations, AI research, AI apps).
 - `npm run check` validates the config for placeholders and broken links, then builds.

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Wand2 } from 'lucide-react';
 import site from '../config/site.js';
 import { useMotion, EASE } from '../hooks/useMotion.jsx';
+import { useRebuild } from '../hooks/useRebuild.jsx';
 
 export default function Header({ sections, active }) {
   const { on, toggle } = useMotion();
+  const rebuild = useRebuild();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -52,6 +54,21 @@ export default function Header({ sections, active }) {
           </nav>
 
           <div className="header-actions">
+            {on && rebuild && (
+              <button
+                type="button"
+                className="rebuild-btn"
+                onClick={() => {
+                  setOpen(false);
+                  rebuild.start();
+                }}
+                disabled={rebuild.running}
+                title="Wipe the page and watch a cursor swarm rebuild it"
+              >
+                <Wand2 aria-hidden="true" />
+                <span>Rebuild</span>
+              </button>
+            )}
             <button type="button" className="motion-toggle" aria-pressed={on} onClick={toggle} title="Toggle animations">
               <span className="sw" aria-hidden="true" />
               <span>Motion {on ? 'on' : 'off'}</span>

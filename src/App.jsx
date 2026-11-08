@@ -4,7 +4,9 @@ import projects from './data/projects.js';
 import { experience, education, awards } from './data/experience.js';
 import { asset } from './lib/utils.js';
 import { MotionProvider } from './hooks/useMotion.jsx';
+import { RebuildProvider } from './hooks/useRebuild.jsx';
 import { useActiveSection } from './hooks/useActiveSection.js';
+import Rebuild from './components/Rebuild.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import ProjectGrid from './components/ProjectGrid.jsx';
@@ -81,19 +83,22 @@ export default function App() {
 
   return (
     <MotionProvider>
-      <a href="#main" className="skip-link">
-        Skip to content
-      </a>
-      <Header sections={sections} active={active} />
-      <main id="main">
-        <Hero onOpenProject={setOpenProject} />
-        {sections.some((s) => s.id === 'work') && <ProjectGrid onOpen={setOpenProject} />}
-        <About />
-        {sections.some((s) => s.id === 'journey') && <Journey />}
-        <Contact />
-      </main>
-      <Footer />
-      <ProjectDialog project={openProject} onClose={close} />
+      <RebuildProvider>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <Header sections={sections} active={active} />
+        <main id="main">
+          <Hero onOpenProject={setOpenProject} />
+          {sections.some((s) => s.id === 'work') && <ProjectGrid onOpen={setOpenProject} />}
+          <About />
+          {sections.some((s) => s.id === 'journey') && <Journey />}
+          <Contact />
+        </main>
+        <Footer />
+        <ProjectDialog project={openProject} onClose={close} />
+        <Rebuild />
+      </RebuildProvider>
     </MotionProvider>
   );
 }

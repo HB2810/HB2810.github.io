@@ -1676,17 +1676,152 @@ ul {
 }
 
 /* ==========================================================================
-   HERO CURSOR SWARM  (decorative canvas; mounted only while Motion is on)
+   REBUILD EFFECT  (page wiped blank, then rebuilt by a cursor swarm)
    ========================================================================== */
-.hero-swarm {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+.rebuild-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s var(--ease);
 }
-.hero > .container {
-  position: relative;
-  z-index: 1;
+.rebuild-btn:hover {
+  color: var(--text);
+}
+.rebuild-btn svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+.rebuild-btn[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+/* While rebuilding, every block of the page is hidden until the swarm places it. */
+body.rebuilding main *,
+body.rebuilding .footer * {
+  visibility: hidden;
+}
+body.rebuilding main .rb-shown,
+body.rebuilding main .rb-shown *,
+body.rebuilding .footer .rb-shown,
+body.rebuilding .footer .rb-shown * {
+  visibility: visible;
+}
+body.rebuilding .section {
+  border-top-color: transparent;
+}
+body.rebuilding .hero-foot,
+body.rebuilding .filters,
+body.rebuilding .timeline,
+body.rebuilding .tl-item,
+body.rebuilding .contact-list,
+body.rebuilding .contact-list li,
+body.rebuilding .form-row,
+body.rebuilding .footer,
+body.rebuilding .metric,
+body.rebuilding .tools-strip {
+  border-color: transparent;
+}
+.rb-pop {
+  animation: rb-pop 0.45s var(--ease) both;
+}
+@keyframes rb-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rb-wipe {
+  animation: rb-wipe var(--rb-dur, 0.6s) linear both;
+}
+@keyframes rb-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.rb-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  pointer-events: none;
+  display: none;
+}
+.rb-canvas.active {
+  display: block;
+}
+.rb-ui {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: 135;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100vw - 32px);
+  padding: 6px 6px 6px 14px;
+  background: rgba(17, 16, 16, 0.92);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.rb-ui .rb-progress {
+  color: var(--muted);
+  margin-right: 6px;
+}
+.rb-ui .rb-progress b {
+  color: var(--text);
+}
+.rb-ui button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 36px;
+  padding: 0 11px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.rb-ui button:hover,
+.rb-ui button[aria-pressed='true'] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.rb-ui .rb-speeds {
+  display: inline-flex;
+}
+.rb-ui .rb-skip {
+  background: var(--accent);
+  color: #fff;
+}
+.rb-ui .rb-skip:hover {
+  background: #ff3d4f;
+  color: #fff;
+}
+.rb-ui .rb-skip svg {
+  width: 14px;
+  height: 14px;
+}
+@media (max-width: 480px) {
+  .rb-ui .rb-progress {
+    display: none;
+  }
 }

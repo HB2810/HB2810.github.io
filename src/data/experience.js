@@ -6,12 +6,12 @@
 
 export const experience = [
   {
-    id: 'stavya-it-executive',
-    title: 'IT Executive',
+    id: 'stavya-ai-officer',
+    title: 'AI Officer',
     organization: 'Stavya Spine Hospital',
     period: '2026 · Now',
     description:
-      'Managing IT infrastructure, system support, hardware and software troubleshooting and day-to-day IT operations, while continuing independent research and projects in AI/ML and computer vision.',
+      'A multi-role position driving AI adoption across the hospital: digital transformation of daily operations with AI tools to make them more efficient and easier to run, AI-based research, and building AI applications for routine clinical and administrative workflows.',
   },
   {
     id: 'sac-isro-intern',
