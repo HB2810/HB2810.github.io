@@ -9,7 +9,7 @@ configuration and the decisions taken so the build can be reproduced or changed 
 | Key | Value | Source |
 | --- | --- | --- |
 | referenceWebsite | https://touquirakhtar.com/ | brief |
-| websiteUrl | https://hb2810.github.io/HB-Portfolio/ | existing `package.json` homepage |
+| websiteUrl | https://hb2810.github.io/ | existing `package.json` homepage |
 | fullName / displayName | Het Bhatt / HET | existing site |
 | profession / roleLine2 | AI / ML Engineer · Computer Vision · IT Executive | existing site, resume |
 | location | Ahmedabad, India | existing site |

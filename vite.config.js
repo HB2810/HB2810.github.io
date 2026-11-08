@@ -2,10 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // Base path:
-//   GitHub Pages project site (https://hb2810.github.io/HB-Portfolio/) needs '/HB-Portfolio/'.
-//   Vercel, Netlify or a custom domain serve from the root: set VITE_BASE=/ in that host's
-//   environment variables (or run `VITE_BASE=/ npm run build`).
+//   The site is a GitHub Pages user site (https://hb2810.github.io/) served from the root.
+//   To serve from a sub-path instead, set VITE_BASE=/sub-path/ in the host's
+//   environment variables (or run `VITE_BASE=/sub-path/ npm run build`).
 export default defineConfig({
   plugins: [react()],
-  base: process.env.VITE_BASE || '/HB-Portfolio/',
+  base: process.env.VITE_BASE || '/',
 });

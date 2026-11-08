@@ -8,7 +8,7 @@
 
 export const site = {
   // Used for the canonical URL and Open Graph tags.
-  websiteUrl: 'https://hb2810.github.io/HB-Portfolio/',
+  websiteUrl: 'https://hb2810.github.io/',
 
   identity: {
     fullName: 'Het Bhatt',

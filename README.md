@@ -8,7 +8,7 @@ and is documented in `docs/superpowers/specs/2026-11-08-portfolio-design.md`.
 
 ```bash
 npm install        # once
-npm run dev        # local dev server (http://localhost:5173/HB-Portfolio/)
+npm run dev        # local dev server (http://localhost:5173/)
 npm run check      # validates content (no placeholders / broken links) then builds
 npm run build      # production build → dist/
 npm run preview    # serve the production build locally
@@ -36,8 +36,8 @@ Leave any string empty (`""`) or set a `preferences.show…` flag to `false` to 
 
 ### Deploying elsewhere (Vercel, Netlify, custom domain)
 
-`vite.config.js` defaults to `base: '/HB-Portfolio/'` for GitHub Pages. On a host that serves
-from the root, set the environment variable `VITE_BASE=/` in that host's project settings
+`vite.config.js` defaults to `base: '/'` (the site is a GitHub Pages user site at the root). On a host that serves
+from a sub-path, set the environment variable `VITE_BASE=/sub-path/` in that host's project settings
 (build command `npm run build`, output directory `dist`) and update `websiteUrl` in
 `src/config/site.js` to the final address so canonical and Open Graph tags are right.
 
