@@ -29,7 +29,7 @@ export const education = [
     title: 'B.E. in Information Technology',
     organization: 'LDRP-ITR, KSV University, Ahmedabad',
     period: '2022 – 2026',
-    description: 'Current CGPA 7.28 / 10.',
+    description: 'Graduated 2026 · CGPA 7.28 / 10.',
   },
 ];
 

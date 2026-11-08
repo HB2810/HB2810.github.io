@@ -40,6 +40,34 @@ export default function Rebuild() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Auto-start on page load (once per visit), unless the visitor opted out of motion.
+  const autoRan = useRef(false);
+  useEffect(() => {
+    const cfg = site.rebuild || {};
+    if (!cfg.autoStart || autoRan.current || !on) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    let timer = 0;
+    let cancelled = false;
+    const go = () => {
+      if (cancelled) return;
+      timer = window.setTimeout(() => {
+        if (cancelled || autoRan.current) return;
+        autoRan.current = true;
+        rb.setSpeed([1, 2, 3].includes(cfg.autoSpeed) ? cfg.autoSpeed : 1);
+        rb.setTour(Boolean(cfg.autoTour));
+        rb.start();
+      }, cfg.autoDelay ?? 350);
+    };
+    const ready = document.fonts?.ready ?? Promise.resolve();
+    if (document.readyState === 'complete') ready.then(go);
+    else window.addEventListener('load', () => ready.then(go), { once: true });
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [on]);
+
   // Motion switched off mid-build: finish immediately.
   useEffect(() => {
     if (!on && rb.running) rb.stop();

@@ -23,7 +23,7 @@ export const site = {
     intro:
       'Exploring intelligence through code. From mathematical theory to production systems, I build deep-learning and computer-vision work that actually ships.',
     about: [
-      "I'm Het, a B.E. Information Technology student at LDRP-ITR (KSV University, Ahmedabad) graduating in 2026, currently working as AI Officer at Stavya Spine Hospital, where I lead AI-driven digital transformation of day-to-day operations.",
+      "I'm Het, AI Officer at Stavya Spine Hospital, where I lead AI-driven digital transformation of day-to-day operations, AI-based research and AI applications for routine workflows. I hold a B.E. in Information Technology from LDRP-ITR (KSV University, Ahmedabad), class of 2026.",
       'My work sits at the intersection of AI, deep learning and computer vision. I interned at SAC-ISRO on FMCW Lidar preprocessing and published a Scopus-indexed paper on Gujarati image captioning with Springer.',
       'I believe in depth over breadth, fundamentals over shortcuts, and building things that actually work.',
     ],
@@ -108,6 +108,14 @@ export const site = {
     showDownloadResume: true,
     showProjectArchive: true,
     showProcess: true,
+  },
+
+  // Page "Rebuild" effect (cursor swarm rebuilds the page). Also available from the header button.
+  rebuild: {
+    autoStart: true, // run automatically on every visit (skipped when Motion is off or reduced motion is set)
+    autoSpeed: 2, // 1 | 2 | 3 — speed used for the automatic run
+    autoTour: false, // auto-scroll the page while it rebuilds
+    autoDelay: 350, // ms to wait after the page has loaded before starting
   },
 
   // Storage key for the motion toggle, derived from the brand.

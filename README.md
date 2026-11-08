@@ -47,8 +47,9 @@ The header **Rebuild** button wipes the page blank and a swarm of named cursors 
 boxes are dragged out with a crosshair and size badge, text is wiped in behind a caret,
 section headings get a ruler guide, the swarm works nearest to where you have scrolled, and
 the floating bar offers 1×/2×/3× speed, a **Tour** auto-scroll and **Skip**. It is an original
-implementation in `src/lib/rebuild/engine.js`; it only runs while Motion is on and never runs
-automatically. The review of the upstream "Swarm Rebuild" code it was inspired by is in
+implementation in `src/lib/rebuild/engine.js` and only runs while Motion is on. By default it
+also plays automatically on every visit (`rebuild.autoStart` in `src/config/site.js`, with
+`autoSpeed`, `autoTour` and `autoDelay`); visitors with reduced motion or Motion off never see it. The review of the upstream "Swarm Rebuild" code it was inspired by is in
 `docs/swarmline-security-review.md`.
 
 ## Accessibility & motion
