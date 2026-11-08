@@ -6,6 +6,7 @@ import projects from '../data/projects.js';
 import { asset } from '../lib/utils.js';
 import { useMotion, EASE } from '../hooks/useMotion.jsx';
 import Magnetic from './Magnetic.jsx';
+import Swarm from './Swarm.jsx';
 
 const fade = (on, delay) => (on ? { initial: { opacity: 0, y: 28 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, ease: EASE, delay } } : {});
 
@@ -24,6 +25,7 @@ export default function Hero({ onOpenProject }) {
 
   return (
     <section id="top" className="hero" ref={ref} aria-label="Introduction">
+      <Swarm />
       <div className="container hero-top">
         <motion.p className="role" {...fade(on, 0)}>
           <span>{identity.profession}</span>
